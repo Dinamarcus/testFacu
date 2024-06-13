@@ -110,6 +110,7 @@
         } else {
             userIdInput.value = Math.floor(Math.random() * 1000000);
             localStorage.setItem("userId", userIdInput.value);
+            obtenerDatosDeUsuarios();
         }
     }
 
@@ -181,6 +182,7 @@
     
             grupos.appendChild(card);
         } else {
+            obtenerDatosDeUsuarios();
             // Si ya existe, simplemente añade el usuario al card existente
             const lista = grupoCard.querySelector('ul');
             lista.innerHTML += `<li>${usuario.nombre} ${usuario.apellido}</li>`;
