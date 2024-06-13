@@ -79,7 +79,7 @@
         }
     
         formulario.insertBefore(alerta, formulario.firstChild);
-        // setTimeout(() => alerta.remove(), 5000);
+        setTimeout(() => alerta.remove(), 3000);
     
         return false;
     };
@@ -238,55 +238,55 @@
         };
     }
 
-    function insertarRegistrosDePrueba() {
-        const usuariosDePrueba = [
-            { id: '1', grupo: '1', nombre: 'Nombre1', apellido: 'Apellido1' },
-            { id: '2', grupo: '1', nombre: 'Nombre2', apellido: 'Apellido2' },
-            { id: '3', grupo: '1', nombre: 'Nombre3', apellido: 'Apellido3' },
-            { id: '4', grupo: '1', nombre: 'Nombre4', apellido: 'Apellido4' },
-            { id: '5', grupo: '1', nombre: 'Nombre5', apellido: 'Apellido5' },
-            { id: '6', grupo: '2', nombre: 'Nombre6', apellido: 'Apellido6' },
-            { id: '7', grupo: '2', nombre: 'Nombre7', apellido: 'Apellido7' },
-            { id: '8', grupo: '2', nombre: 'Nombre8', apellido: 'Apellido8' },
-            { id: '9', grupo: '2', nombre: 'Nombre9', apellido: 'Apellido9' },
-            { id: '10', grupo: '3', nombre: 'Nombre10', apellido: 'Apellido10' },
-            { id: '11', grupo: '3', nombre: 'Nombre11', apellido: 'Apellido11' },
-            { id: '12', grupo: '3', nombre: 'Nombre12', apellido: 'Apellido12' },
-            { id: '13', grupo: '3', nombre: 'Nombre13', apellido: 'Apellido13' },
-            { id: '14', grupo: '3', nombre: 'Nombre14', apellido: 'Apellido14' },
-            { id: '15', grupo: '3', nombre: 'Nombre15', apellido: 'Apellido15' },
-            { id: '16', grupo: '4', nombre: 'Nombre16', apellido: 'Apellido16' },
-            { id: '17', grupo: '4', nombre: 'Nombre17', apellido: 'Apellido17' },
-            { id: '18', grupo: '4', nombre: 'Nombre18', apellido: 'Apellido18' },
-            { id: '19', grupo: '4', nombre: 'Nombre19', apellido: 'Apellido19' },
-            { id: '20', grupo: '4', nombre: 'Nombre20', apellido: 'Apellido20' },
-            { id: '21', grupo: '5', nombre: 'Nombre21', apellido: 'Apellido21' },
-            { id: '22', grupo: '5', nombre: 'Nombre22', apellido: 'Apellido22' },
-            { id: '23', grupo: '5', nombre: 'Nombre23', apellido: 'Apellido23' }
-        ];
+    // function insertarRegistrosDePrueba() {
+    //     const usuariosDePrueba = [
+    //         { id: '1', grupo: '1', nombre: 'Nombre1', apellido: 'Apellido1' },
+    //         { id: '2', grupo: '1', nombre: 'Nombre2', apellido: 'Apellido2' },
+    //         { id: '3', grupo: '1', nombre: 'Nombre3', apellido: 'Apellido3' },
+    //         { id: '4', grupo: '1', nombre: 'Nombre4', apellido: 'Apellido4' },
+    //         { id: '5', grupo: '1', nombre: 'Nombre5', apellido: 'Apellido5' },
+    //         { id: '6', grupo: '2', nombre: 'Nombre6', apellido: 'Apellido6' },
+    //         { id: '7', grupo: '2', nombre: 'Nombre7', apellido: 'Apellido7' },
+    //         { id: '8', grupo: '2', nombre: 'Nombre8', apellido: 'Apellido8' },
+    //         { id: '9', grupo: '2', nombre: 'Nombre9', apellido: 'Apellido9' },
+    //         { id: '10', grupo: '3', nombre: 'Nombre10', apellido: 'Apellido10' },
+    //         { id: '11', grupo: '3', nombre: 'Nombre11', apellido: 'Apellido11' },
+    //         { id: '12', grupo: '3', nombre: 'Nombre12', apellido: 'Apellido12' },
+    //         { id: '13', grupo: '3', nombre: 'Nombre13', apellido: 'Apellido13' },
+    //         { id: '14', grupo: '3', nombre: 'Nombre14', apellido: 'Apellido14' },
+    //         { id: '15', grupo: '3', nombre: 'Nombre15', apellido: 'Apellido15' },
+    //         { id: '16', grupo: '4', nombre: 'Nombre16', apellido: 'Apellido16' },
+    //         { id: '17', grupo: '4', nombre: 'Nombre17', apellido: 'Apellido17' },
+    //         { id: '18', grupo: '4', nombre: 'Nombre18', apellido: 'Apellido18' },
+    //         { id: '19', grupo: '4', nombre: 'Nombre19', apellido: 'Apellido19' },
+    //         { id: '20', grupo: '4', nombre: 'Nombre20', apellido: 'Apellido20' },
+    //         { id: '21', grupo: '5', nombre: 'Nombre21', apellido: 'Apellido21' },
+    //         { id: '22', grupo: '5', nombre: 'Nombre22', apellido: 'Apellido22' },
+    //         { id: '23', grupo: '5', nombre: 'Nombre23', apellido: 'Apellido23' }
+    //     ];
     
-        const request = indexedDB.open('miBaseDeDatos', 1);
+    //     const request = indexedDB.open('miBaseDeDatos', 1);
     
-        request.onsuccess = function(event) {
-            const db = event.target.result;
-            const transaction = db.transaction(['usuarios'], 'readwrite');
-            const store = transaction.objectStore('usuarios');
+    //     request.onsuccess = function(event) {
+    //         const db = event.target.result;
+    //         const transaction = db.transaction(['usuarios'], 'readwrite');
+    //         const store = transaction.objectStore('usuarios');
     
-            usuariosDePrueba.forEach(usuario => {
-                const addRequest = store.add(usuario);
+    //         usuariosDePrueba.forEach(usuario => {
+    //             const addRequest = store.add(usuario);
     
-                addRequest.onsuccess = function() {
-                    console.log('Usuario insertado exitosamente:', usuario);
-                };
+    //             addRequest.onsuccess = function() {
+    //                 console.log('Usuario insertado exitosamente:', usuario);
+    //             };
     
-                addRequest.onerror = function(event) {
-                    console.error('Error al insertar el usuario:', event.target.error);
-                };
-            });
-        };
+    //             addRequest.onerror = function(event) {
+    //                 console.error('Error al insertar el usuario:', event.target.error);
+    //             };
+    //         });
+    //     };
     
-        request.onerror = function(event) {
-            console.error('Error al abrir la base de datos:', event.target.errorCode);
-        };
-    }
+    //     request.onerror = function(event) {
+    //         console.error('Error al abrir la base de datos:', event.target.errorCode);
+    //     };
+    // }
 })();
