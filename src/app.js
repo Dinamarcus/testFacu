@@ -65,12 +65,14 @@
     
         // Corrige el texto en el caso de éxito para que muestre "Éxito" en lugar de "Error"
         if (tipo === "error") {
+            alerta.classList.add("alert");
             alerta.innerHTML = `
                 <div class="bg-orange-100 border-l-4 border-red-500 text-red-700 p-3 rounded-md alert" role="alert">
                 <p><b>Error! </b>${mensaje}</p>
                 </div>
             `;
         } else if (tipo === "exito") {
+            alerta.classList.add("alert");
             alerta.innerHTML = `
                 <div class="bg-orange-100 border-l-4 border-green-500 text-green-700 p-4 alert" role="alert">
                 <p><b>Exito! </b>${mensaje}</p>
@@ -79,14 +81,16 @@
         }
     
         formulario.insertBefore(alerta, formulario.firstChild);
-        setTimeout(() => alerta.remove(), 3000);
-    
-        return false;
+
+        setTimeout(() => {
+            const alertas = document.querySelectorAll(".alert");
+            alertas.forEach(alerta => alerta.remove());
+        }, 3000);
     };
     
     const limpiarAlertas = () => {
         const alertas = document.querySelectorAll(".alert");
-        alertas.forEach(alerta => alerta.remove());
+        alertas.forEach(alerta => formulario);
     }
     
     document.addEventListener("DOMContentLoaded", () => {
@@ -150,9 +154,9 @@
         // Crear una card para cada grupo
         Object.keys(usuariosPorGrupo).forEach(grupo => {
             const card = document.createElement('div');
-            card.classList.add('card', 'p-4', 'mb-4', 'rounded-lg', 'shadow-lg'); // Añade tus clases de Tailwind aquí
+            card.classList.add('card', 'p-4', 'mb-4', 'rounded-lg', 'shadow-xl', "bg-gray-300", "px-2", "flex-shrink"); // Añade tus clases de Tailwind aquí
     
-            let cardContent = `<h2 class="text-xl font-bold mb-2 grupo-${grupo}">Grupo ${grupo}</h2>`;
+            let cardContent = `<h2 class="text-xl font-bold mb-2 grupo-${grupo} text-center">Grupo ${grupo}</h2>`;
             cardContent += '<ul>';
     
             usuariosPorGrupo[grupo].forEach(usuario => {
